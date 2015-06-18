@@ -1,0 +1,83 @@
+﻿<div class="col-md-offset-2 col-md-8 col-md-offset-2 col-xs-12 col-sm-12">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-md-5 col-xs-4 col-sm-5">
+                <input type="text" class="form-control" placeholder="Explore Places In e.g New York" data-ng-model="exploreNearBy" />
+            </div>
+            <div class="col-md-5 col-xs-4 col-sm-5">
+                <input type="text" class="form-control" placeholder="Specify Category e.g Burger" data-ng-model="exploreCategory" />
+            </div>
+            <div class="col-md-2 col-xs-4 col-sm-2">
+                <button class="btn btn-primary pull-right" data-ng-click="doSearch()">
+                    <span class="glyphicon glyphicon-search">Explore</span>
+                </button>
+            </div>
+        </div>
+
+        <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+
+        <div class="well well-sm" data-ng-show="totalResultCount == 0">
+            <h5>No Places found Near by ({{exploreNearBy}})</h5>
+        </div>
+
+        <div data-ng-show="totalResultCount > 0">
+            <div class="form-group">
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <input type="text" class="form-control" placeholder="Filter Places by PlaceName or Category" data-ng-model="placeFilter" />
+                </div>
+            </div>
+            <ul class="list-group" data-ng-repeat="item in filteredPlaces">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-2 col-sx-4 col-sm-6">
+                            <img data-ng-src="{{buildCategoryIcon(item.venue.categories[0].icon)}}"
+                                title="{{item.venue.categories[0].shortName}}" class="venueIcon" />
+                        </div>
+                        <div class="col-md-6 col-sx-4 col-sm-2">
+                            <a href="" data-ng-click="showVenuePhotos(item.venue.id,item.venue.name)">
+                                <h2 class="venueName">{{item.venue.name}}</h2>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sx-4 col-sm-4">
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-sx-4 col-sm-6">
+                            <span class="badge">{{item.venue.rating}}</span>
+                        </div>
+                        <div class="col-md-6 col-sx-4 col-sm-2">
+                            <p class="text-warning"><small>{{item.venue.location.address}}</small></p>
+                            <p>{{item.tips[0].text}}</p>
+                            <hr class="separator"/>
+                            <a href="" data-ng-click="bookmarkPlace(item.venue)">
+                                <span class="glyphicon glyphicon-bookmark"> BookmarkPlace</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sx-4 col-sm-4">
+                            <a href="" data-ng-click="showVenuePhotos(item.venue.id, item.venue.name)">
+                                <img class="img-thumbnail" data-ng-src="{{buildVenueThumbnail(item.venue.photos.groups[0])}}"/>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="col-md-offset-2 col-md-8 col-md-offset-2 text-center">
+            <pagination 
+                boundary-links="true" 
+                total-items="totalResultCount"
+                items-per-page="pageSize"
+                rotate="false" 
+                max-size="maxSize"
+                ng-model="currentPage" 
+                class="pagination-sm" 
+                previous-text="&lsaquo;" 
+                next-text="&rsaquo;" 
+                first-text="&laquo;" 
+                last-text="&raquo;"
+                ng-change="pageChanged()">
+            </pagination>
+            </div>
+        </div>
+    </form>
+</div>

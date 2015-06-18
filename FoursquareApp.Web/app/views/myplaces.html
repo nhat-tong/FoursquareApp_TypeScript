@@ -1,0 +1,50 @@
+﻿<div>
+    <toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+
+    <div data-ng-show="totalPlaceCount > 0">
+        <h3>Les places of user: {{userName}}</h3>
+    </div>
+    <div>
+        <table class="table table-responsive table-bordered table table-striped table-hover table-condensed">
+            <thead>
+                <th class="text-center">Place Name</th>
+                <th class="text-center">Category</th>
+                <th class="text-center">Address</th>
+                <th class="text-center">Rating</th>
+                <th class="text-center">#</th>
+            </thead>
+            <tbody class="text-center">
+                <tr data-ng-show="totalPlaceCount == 0">
+                    <td colspan="5">
+                        <div class="text-center text-warning">No bookmarked places found, Explore Foursquare and Bookmark Some Places!</div>
+                    </td>
+                </tr>
+                <tr data-ng-repeat="place in myPlaces">
+                    <td>{{place.name}}</td>
+                    <td>{{place.category}}</td>
+                    <td>{{place.address}}</td>
+                    <td>{{place.rating}}</td>
+                    <td>
+                        <button type="button" class="btn btn-success" data-ng-click="delete(place.id, place.userName)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-offset-2 col-md-8 col-md-offset-2 text-center" data-ng-show="totalPlaceCount > 0">
+        <pagination
+            boundary-links="true"
+            total-items="totalPlaceCount"
+            items-per-page="pageSize"
+            rotate="false"
+            max-size="maxSize"
+            ng-model="currentPage"
+            class="pagination-sm"
+            previous-text="&lsaquo;"
+            next-text="&rsaquo;"
+            first-text="&laquo;"
+            last-text="&raquo;"
+            ng-change="pageChanged()">
+            </pagination>
+    </div>
+</div>

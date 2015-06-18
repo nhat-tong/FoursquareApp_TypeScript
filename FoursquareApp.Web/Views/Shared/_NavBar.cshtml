@@ -1,0 +1,24 @@
+﻿@using FoursquareApp.Web.Models;
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav"><a href="#/explore">Explore</a></li>
+        <li class="nav"><a href="#/places">My Places</a></li>
+        <li class="nav"><a href="#/about">About</a></li>
+        @if(!HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+        <li class="nav"><a href="#/signin">Sign In</a></li>
+        }
+        else
+        {
+            var userName = HttpContext.Current.User.Identity.Name;
+            <span>Hi @userName</span>
+            <li class="nav"><a href="#/signout">Sign Out</a></li>
+            if (Variables.EnableRefresh)
+            {
+                Response.Redirect(Request.RawUrl);
+                Variables.EnableRefresh = false;
+            }
+        }
+    </ul>
+</div>

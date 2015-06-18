@@ -1,0 +1,17 @@
+﻿<div>
+    <div class="modal-header">
+        <a class="close" data-ng-click="close()">x</a>
+        <h3 class="modal-title">{{venueName}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div data-ng-repeat="item in items">
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <img class="img-thumbnail" data-ng-src="{{buildVenuePhoto(item)}}"/>
+                </div>
+            </div>
+        </div
+    </div>
+    <div class="modal-footer">
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav"><a href="/explore">Explore</a></li>
+        <li class="nav"><a href="/places">My Places</a></li>
+        <li class="nav"><a href="/about">About</a></li>
+        <li class="nav" data-ng-show="IsConnected == false"><a href="#/signin">Sign In</a></li>
+        <li data-ng-show="IsConnected == true">
+        <span class="nav">Hello {{userName}}</span>
+        <span class="nav"><a href="/explore" data-ng-click="signOut()">Sign Out</a></span>
+        </li>
+    </ul>
+</div>

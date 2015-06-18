@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html data-ng-app="FoursquareApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Foursquare App</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/mycss")
+    @Styles.Render("~/Content/mybootstrap")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/myangular")
+    @Scripts.Render("~/bundles/myangular_ui")
+    @Scripts.Render("~/bundles/myangular_animate")
+    @Scripts.Render("~/bundles/myfoursquare_js");
+</head>
+<body>
+    <div id="page">
+        <header class="container">
+            <div class="navbar navbar-default" id="menu">
+                <div class="navbar-header">
+                    <button class="btn btn-success navbar-toggle"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </button>
+                    <div id="logo">
+                        <h4>Explore Foursquare</h4>
+                    </div>
+                </div>
+                <login-directive><//login-directive>
+            </div>
+        </header>
+
+        <section id="body" class="container">
+            <div data-ng-view></div>
+        </section>
+
+        <hr />
+
+        <footer class="container">
+        </footer>
+
+        <base href="/" />
+    </div>
+</body>
+</html>

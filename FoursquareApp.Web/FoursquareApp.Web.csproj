@@ -331,6 +331,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\services\PlaceDataService.ts" />
     <TypeScriptCompile Include="app\services\PlaceExploreService.ts" />
+    <TypeScriptCompile Include="app\services\PlacePhotoService.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs-toaster\angularjs-toaster.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
